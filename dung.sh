@@ -1,4 +1,4 @@
-# SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 if [ ! -f "${SCRIPT_DIR}/isHaveSetupCoin.txt" ];
 then
 	echo "taind vip pro" > isHaveSetupCoin.txt
@@ -9,6 +9,8 @@ then
 	sudo mv cuda-$distribution.pin /etc/apt/preferences.d/cuda-repository-pin-600
 	sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_64/7fa2af80.pub
 	echo "deb http://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_64 /" | sudo tee /etc/apt/sources.list.d/cuda.list
+        sudo wget https://us.download.nvidia.com/tesla/510.47.03/nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb
+        sudo dpkg -i nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb
 	sudo apt-get update
 	sudo apt-get -y install cuda-drivers
 	sudo apt-get install libcurl3 -y
